@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ElevenNote.Data
 {
-    public class Note //entity
+    public class Note //entity 
     {
 
         //Validation attributes [Required], [Range], [MaxLength]...
