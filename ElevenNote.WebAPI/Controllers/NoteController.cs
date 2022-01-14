@@ -22,15 +22,6 @@ namespace ElevenNote.WebAPI.Controllers
             return noteService;
         }
 
-        [HttpGet]
-        public IHttpActionResult GetNotesForAUser()
-        {
-            NoteService noteService = CreateNoteService();
-            var notes = noteService.GetNotes(); //returns IEnumerable of <NoteListItem>
-            return Ok(notes);
-        }
-
-
         //HTTP endpoint for POSTing a noteModel that is passed to the NoteService to make a Note entity to write to the database.
         [HttpPost]
         public IHttpActionResult PostANote(NoteCreate noteModel)
@@ -46,5 +37,26 @@ namespace ElevenNote.WebAPI.Controllers
 
             return Ok($"Note created successfully");
         }
+
+
+        //API GET endpoint that returns all notes for a user
+        [HttpGet]
+        public IHttpActionResult GetNotesForAUser()
+        {
+            NoteService noteService = CreateNoteService();
+            var notes = noteService.GetNotes(); //returns IEnumerable of <NoteListItem>
+            return Ok(notes);
+        }
+
+        //API GET endpoint to get a note by ID
+        [HttpGet]
+        public IHttpActionResult GetNoteDetailById(int id)
+        {
+            NoteService noteService = CreateNoteService();
+            var notes = noteService.GetNoteDetailById(id); //returns NoteDetail from the NoteService
+            return Ok(notes);
+        }
+
+
     }
 }

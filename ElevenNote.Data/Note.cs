@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ElevenNote.Data
 {
-    public class Note //entity 
+    public class Note // primary DB entity for the project. 
     {
 
         //Validation attributes [Required], [Range], [MaxLength]...
@@ -29,6 +29,6 @@ namespace ElevenNote.Data
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
-        public DateTimeOffset? MedifiedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }
