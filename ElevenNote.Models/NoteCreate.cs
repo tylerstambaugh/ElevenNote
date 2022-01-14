@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ElevenNote.Models
 {
-    public class NoteCreate
+    public class NoteCreate //model
     {
         [Required]
         [MinLength(2, ErrorMessage = "Title must be at least 2 characters.")]

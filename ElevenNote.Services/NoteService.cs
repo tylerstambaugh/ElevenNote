@@ -20,6 +20,9 @@ namespace ElevenNote.Services
             
         }
 
+        //create a note in the database 
+        //take the NoteCreate model properties and assign them to and entity, then write the 
+        //entity to the DB
         public bool CreateNote(NoteCreate noteModel)
         {
             //using inline constructor 
@@ -45,7 +48,7 @@ namespace ElevenNote.Services
             {
                 //linq query
                 var query =
-                    ctx
+                    ctx     //query Notes table
                         .Notes
                         .Where(e => e.OwenrId == _userId)
                         .Select(
