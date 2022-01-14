@@ -87,5 +87,24 @@ namespace ElevenNote.Services
 
             }
         }
+
+        //update a note based on the noteId and owner of the NoteEdit model being passed in
+        public bool UpdateNote(NoteEdit updatedNoteModel)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                Note noteToUpdate =
+                    ctx
+                        .Notes                  //get the note that has the ID and owner of the                             note model being                                                             passed in
+                            .Single(e => e.NoteId == updatedNoteModel.NoteId && e.OwnerId == _userId);
+
+                noteToUpdate.Title = updatedNoteModel.Title;
+                noteToUpdate.Content = updatedNoteModel.Content;
+                noteToUpdate.ModifiedUtc = DateTimeOffset.Now;
+
+                return ctx.SaveChanges() == 1;
+                    
+            }
+        }
     }
 }

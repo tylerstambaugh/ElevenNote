@@ -57,6 +57,20 @@ namespace ElevenNote.WebAPI.Controllers
             return Ok(notes);
         }
 
+        // API PUT endpoint to update a note based on the 
+
+        [HttpPut]
+        public IHttpActionResult UpdateNote(NoteEdit updatedNote)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            NoteService noteService = CreateNoteService();
+            if (!noteService.UpdateNote(updatedNote))
+                return InternalServerError();
+
+            return Ok();
+        }
 
     }
 }
