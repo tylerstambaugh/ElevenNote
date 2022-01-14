@@ -85,12 +85,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202201131842158_InitialCreate.cs" />
+    <Compile Include="Migrations\202201131842158_InitialCreate.Designer.cs">
+      <DependentUpon>202201131842158_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201140117468_fixedTypoInNoteEntity.cs" />
+    <Compile Include="Migrations\202201140117468_fixedTypoInNoteEntity.Designer.cs">
+      <DependentUpon>202201140117468_fixedTypoInNoteEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201140121334_fixedTypoInNoteEntity2.cs" />
+    <Compile Include="Migrations\202201140121334_fixedTypoInNoteEntity2.Designer.cs">
+      <DependentUpon>202201140121334_fixedTypoInNoteEntity2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202201131842158_InitialCreate.resx">
+      <DependentUpon>202201131842158_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201140117468_fixedTypoInNoteEntity.resx">
+      <DependentUpon>202201140117468_fixedTypoInNoteEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201140121334_fixedTypoInNoteEntity2.resx">
+      <DependentUpon>202201140121334_fixedTypoInNoteEntity2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
