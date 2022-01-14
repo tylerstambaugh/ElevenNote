@@ -28,7 +28,7 @@ namespace ElevenNote.Services
             //using inline constructor 
             Note noteEntity = new Note()
             {
-                OwenrId = _userId,
+                OwnerId = _userId,
                 Title = noteModel.Title,
                 Content = noteModel.Content,
                 CreatedUtc = DateTimeOffset.Now
@@ -50,7 +50,7 @@ namespace ElevenNote.Services
                 var query =
                     ctx     //query Notes table
                         .Notes
-                        .Where(e => e.OwenrId == _userId)
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                         e =>
                             new NoteListItem
