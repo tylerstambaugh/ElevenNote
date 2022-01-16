@@ -40,5 +40,14 @@ namespace ElevenNote.WebAPI.Controllers
             return Ok($"Categroy {categoryModel.CategoryName} was added successfully");
         }
 
+
+        //controller action to get the list of all categories
+        [HttpGet]
+        public IHttpActionResult GetAllCategories()
+        {
+            CategoryService categoryService = CreateCategoryService();
+            return Ok (categoryService.GetAllCategories());
+        }
+
     }
 }
