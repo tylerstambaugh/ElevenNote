@@ -24,7 +24,7 @@ namespace ElevenNote.WebAPI.Controllers
 
         //HTTP endpoint for POSTing a noteModel that is passed to the NoteService to make a Note entity to write to the database.
         [HttpPost]
-        public IHttpActionResult PostANote(NoteCreate noteModel)
+        public IHttpActionResult PostANote([FromBody] NoteCreate noteModel)
         {
             //
             if (!ModelState.IsValid)

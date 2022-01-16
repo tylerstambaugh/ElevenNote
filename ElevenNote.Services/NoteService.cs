@@ -31,6 +31,7 @@ namespace ElevenNote.Services
                 OwnerId = _userId,
                 Title = noteModel.Title,
                 Content = noteModel.Content,
+                CategoryID = noteModel.CategoryID,
                 CreatedUtc = DateTimeOffset.Now
             };
 

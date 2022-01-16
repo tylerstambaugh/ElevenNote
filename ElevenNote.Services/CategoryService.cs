@@ -30,8 +30,8 @@ namespace ElevenNote.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Category.Add(categoryEntity)
-                    return (ctx.SaveChanges == 1);
+                ctx.Categories.Add(categoryEntity); ;
+                    return (ctx.SaveChanges() == 1);
             }
         }
 

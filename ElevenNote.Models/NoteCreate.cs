@@ -14,5 +14,7 @@ namespace ElevenNote.Models
         [MaxLength(100, ErrorMessage = "Content cannot exceed 100 characters.")]
         public string Title { get; set; }
         public string Content { get; set; }
+
+        public int CategoryID { get; set; }
     }
 }
