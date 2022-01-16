@@ -106,6 +106,10 @@
     <Compile Include="Migrations\202201161709152_addedCategory2.Designer.cs">
       <DependentUpon>202201161709152_addedCategory2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201162328599_seeIfanUpdate.cs" />
+    <Compile Include="Migrations\202201162328599_seeIfanUpdate.Designer.cs">
+      <DependentUpon>202201162328599_seeIfanUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201161709152_addedCategory2.resx">
       <DependentUpon>202201161709152_addedCategory2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201162328599_seeIfanUpdate.resx">
+      <DependentUpon>202201162328599_seeIfanUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
