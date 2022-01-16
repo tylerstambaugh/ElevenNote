@@ -49,5 +49,27 @@ namespace ElevenNote.WebAPI.Controllers
             return Ok (categoryService.GetAllCategories());
         }
 
+
+        //delete a category by it's ID controller action.
+        [HttpDelete]
+        public IHttpActionResult DeleteCategoryByID(int categoryID)
+        {
+            CategoryService categoryService = CreateCategoryService();
+            if (categoryService.DeleteACategoryByID(categoryID))
+                return Ok();
+            return InternalServerError();
+        }
+
+        //update a category controller action that takes in the category ID to update and the updated category model (catgory name and level)
+        [HttpPut]
+        public IHttpActionResult UpdateACateGoryByID([FromUri] int categoryId, [FromBody] UpdateCategory newCategory)
+        {
+            CategoryService categoryService = CreateCategoryService();
+            var updatedCategory = categoryService.UpdateACategoryByID(categoryId, newCategory);
+            if (updatedCategory != null)
+                return Ok(updatedCategory);
+            return InternalServerError();
+        }
+
     }
 }

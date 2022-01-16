@@ -14,6 +14,7 @@ namespace ElevenNote.Services
     {
         private readonly Guid _userId;
 
+        //NoteService constructor that the NoteController uses to interact with the service methods defined below.
         public NoteService(Guid userId)
         {
             _userId = userId;
@@ -58,6 +59,7 @@ namespace ElevenNote.Services
                             {
                                 NoteID = e.NoteId,
                                 Title = e.Title,
+                                CategoryID = e.CategoryID,
                                 CreatedUtc = e.CreatedUtc
                             }
                         );
@@ -82,6 +84,7 @@ namespace ElevenNote.Services
                         NoteId = entity.NoteId,
                         Title = entity.Title,
                         Content = entity.Content,
+                        CategoryID = entity.CategoryID,
                         CreateUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
                     };
@@ -101,6 +104,7 @@ namespace ElevenNote.Services
 
                 noteToUpdate.Title = updatedNoteModel.Title;
                 noteToUpdate.Content = updatedNoteModel.Content;
+                noteToUpdate.CategoryID = updatedNoteModel.CategoryID;
                 noteToUpdate.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
@@ -108,6 +112,7 @@ namespace ElevenNote.Services
             }
         }
 
+        //Delete a note by passing in the noteID
         public bool DeleteNoteByID(int noteId)
         {
 

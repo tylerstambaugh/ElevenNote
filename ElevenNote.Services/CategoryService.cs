@@ -58,5 +58,50 @@ namespace ElevenNote.Services
             }
         }
 
+
+        //update a category by it's ID and return the updated category.
+        public Category UpdateACategoryByID(int categoryID, UpdateCategory updatedCategory)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                Category categoryToUpdate =
+                    ctx
+                    .Categories
+                    .Single(e => e.CategoryID == categoryID);
+
+                categoryToUpdate.CategoryName = updatedCategory.CategoryName;
+                categoryToUpdate.CatLevel = updatedCategory.CategoryLevel;
+
+                if(ctx.SaveChanges() == 1)
+                {
+                    Category categoryToReturn =
+                        ctx
+                        .Categories
+                        .Single(e => e.CategoryID == categoryID);
+
+                    return categoryToReturn;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        //Delete a category
+        public bool DeleteACategoryByID(int categoryID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                Category categoryToDelete =
+                    ctx
+                    .Categories
+                    .Single(e => e.CategoryID == categoryID);
+                ctx.Categories.Remove(categoryToDelete);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }
