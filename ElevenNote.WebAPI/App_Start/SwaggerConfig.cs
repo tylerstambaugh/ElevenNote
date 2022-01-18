@@ -2,11 +2,92 @@ using System.Web.Http;
 using WebActivatorEx;
 using ElevenNote.WebAPI;
 using Swashbuckle.Application;
+using Swashbuckle.Swagger;
+using System.Web.Http.Description;
+using System.Linq;
+using System.Web.Http.Filters;
+using System.Collections.Generic;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
 namespace ElevenNote.WebAPI
 {
+    /// <summary>
+    /// dOCUMENT FILTER FOR ADDING aUTHORICATION HEADER IN sWASHBUCKLE / SWAGGER.
+    /// </summary>
+    public class AddAuthorizationHeaderParameterOperationFilter : IOperationFilter
+    {
+        public void Apply(Operation operation, SchemaRegistry schemaRegistry, ApiDescription apiDescription)
+        {
+            var filterPipeline = apiDescription.ActionDescriptor.GetFilterPipeline();
+            var isAuthorized = filterPipeline
+                .Select(filterInfo => filterInfo.Instance)
+                .Any(filter => filter is IAuthorizationFilter);
+
+            var allowAnoymous = apiDescription.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any();
+
+            if (!isAuthorized || allowAnoymous) return;
+
+            if (operation.parameters == null) operation.parameters = new List<Parameter>();
+
+            operation.parameters.Add(new Parameter
+            {
+                name = "Authorization",
+                @in = "header",
+                description = "from /token endpoint",
+                required = true,
+                type = "string"
+            });
+        }
+    }
+
+    /// <summary>
+    /// Document filter for adding OAuth token endpoint documentation in swashbuckle/swagger.
+    /// Swagger normmaly won't fint it - the /token endpoint - due to it being programattically generated
+    /// </summary>
+    /// 
+
+    class AuthTokenEndpointOperation : IDocumentFilter
+    {
+        public void Apply (SwaggerDocument swaggerDoc, SchemaRegistry schemaRegistry, IApiExplorer apiExplorer)
+        {
+            swaggerDoc.paths.Add("/token", new PathItem
+                {
+                    post = new Operation
+                    {
+                        tags = new List<string> { "Auth"},
+                        consumes = new List<string>
+                        {
+                            "application/x-www-form-urlencoded"
+                        },
+                        parameters = new List<Parameter>
+                        {
+                            new Parameter
+                            {
+                                type = "string",
+                                name = "grant_type",
+                                required = true,
+                                @in = "formData"
+                            },
+                            new Parameter
+                            {
+                                type = "string",
+                                name = "username",
+                                required = false,
+                                @in = "formData"
+                            },
+                              new Parameter
+                            {
+                                type = "string",
+                                name = "password",
+                                required = false,
+                                @in = "formData"
+                            }
+                        }
+                    }
+                });
+        }
+    }
     public class SwaggerConfig
     {
         public static void Register()
@@ -33,6 +114,12 @@ namespace ElevenNote.WebAPI
                         // additional fields by chaining methods off SingleApiVersion.
                         //
                         c.SingleApiVersion("v1", "ElevenNote.WebAPI");
+
+                        // enable the authorization header to [Authorize]d endpoints.
+                        c.OperationFilter(() => new AddAuthorizationHeaderParameterOperationFilter());
+
+                        //show the programatically generated /toekn endpoint in the ui.
+                        c.DocumentFilter<AuthTokenEndpointOperation>();
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //
