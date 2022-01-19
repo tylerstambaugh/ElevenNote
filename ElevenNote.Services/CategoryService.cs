@@ -25,7 +25,8 @@ namespace ElevenNote.Services
             Category categoryEntity = new Category()
             {
                 CategoryName = categoryModel.CategoryName,
-                CatLevel = categoryModel.CategoryLevel
+                CatLevel = categoryModel.CategoryLevel,
+               // CreatedDate = categoryModel.CreatedDate
             };
 
             using (var ctx = new ApplicationDbContext())

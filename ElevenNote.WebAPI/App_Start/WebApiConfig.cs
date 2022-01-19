@@ -17,6 +17,8 @@ namespace ElevenNote.WebAPI
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
+
+            //enable CORS (OWIN package and MS CORS)
             config.EnableCors();
             // Web API routes
             config.MapHttpAttributeRoutes();

@@ -26,7 +26,7 @@ namespace ElevenNote.WebAPI.Controllers
         [HttpPost]
         public IHttpActionResult PostANote([FromBody] NoteCreate noteModel)
         {
-            //
+            //check the annotations on the NoteCreate model
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -71,6 +71,8 @@ namespace ElevenNote.WebAPI.Controllers
 
             return Ok();
         }
+
+        //delete a note by ID
 
         [HttpDelete]
         public IHttpActionResult DeleteNote(int id)

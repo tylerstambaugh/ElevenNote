@@ -84,31 +84,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationUser.cs" />
     <Compile Include="Category.cs" />
-    <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202201131842158_InitialCreate.cs" />
-    <Compile Include="Migrations\202201131842158_InitialCreate.Designer.cs">
-      <DependentUpon>202201131842158_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201140117468_fixedTypoInNoteEntity.cs" />
-    <Compile Include="Migrations\202201140117468_fixedTypoInNoteEntity.Designer.cs">
-      <DependentUpon>202201140117468_fixedTypoInNoteEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201140121334_fixedTypoInNoteEntity2.cs" />
-    <Compile Include="Migrations\202201140121334_fixedTypoInNoteEntity2.Designer.cs">
-      <DependentUpon>202201140121334_fixedTypoInNoteEntity2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201161327259_addedCategory.cs" />
-    <Compile Include="Migrations\202201161327259_addedCategory.Designer.cs">
-      <DependentUpon>202201161327259_addedCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201161709152_addedCategory2.cs" />
-    <Compile Include="Migrations\202201161709152_addedCategory2.Designer.cs">
-      <DependentUpon>202201161709152_addedCategory2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201162328599_seeIfanUpdate.cs" />
-    <Compile Include="Migrations\202201162328599_seeIfanUpdate.Designer.cs">
-      <DependentUpon>202201162328599_seeIfanUpdate.cs</DependentUpon>
+    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Migrations\202201191716413_InitialMigration.cs" />
+    <Compile Include="Migrations\202201191716413_InitialMigration.Designer.cs">
+      <DependentUpon>202201191716413_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
@@ -119,23 +100,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202201131842158_InitialCreate.resx">
-      <DependentUpon>202201131842158_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201140117468_fixedTypoInNoteEntity.resx">
-      <DependentUpon>202201140117468_fixedTypoInNoteEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201140121334_fixedTypoInNoteEntity2.resx">
-      <DependentUpon>202201140121334_fixedTypoInNoteEntity2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201161327259_addedCategory.resx">
-      <DependentUpon>202201161327259_addedCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201161709152_addedCategory2.resx">
-      <DependentUpon>202201161709152_addedCategory2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201162328599_seeIfanUpdate.resx">
-      <DependentUpon>202201162328599_seeIfanUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202201191716413_InitialMigration.resx">
+      <DependentUpon>202201191716413_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

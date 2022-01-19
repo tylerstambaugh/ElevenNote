@@ -14,5 +14,7 @@ namespace ElevenNote.Models
         public string CategoryName { get; set; }
         [Required, Range(1, 4)]
         public CategoryLevel CategoryLevel { get; set; }
+
+       // public DateTime CreatedDate { get; set; }
     }
 }
