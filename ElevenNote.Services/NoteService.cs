@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ElevenNote.Services
 {
 
-    //The service layer is how our application interacts with the database. 
+    //The service layer is how our application interacts with the database. The curd operations for the Note entity.
     public class NoteService
     {
         private readonly Guid _userId;
